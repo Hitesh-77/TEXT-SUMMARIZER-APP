@@ -22,7 +22,7 @@ https://github.com/Hitesh-77/TEXT-SUMMARIZER-APP
 
 ### Text Summarization
 
-![Text Summarization](images/summarization.png)
+![Text Summarization](images/summarize.jpeg)
 
 ---
 
