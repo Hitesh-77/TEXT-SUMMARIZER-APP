@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Summarizer</h1>
+        <h3>using HuggingFace Transformer</h3>
+        
+        <form action="" id = "summarization-form">
+            <label for="dialogue-box">Write or Paste your content below for quick Summarization</label>
+            <textarea name="" id="dialogue-box" placeholder="Enter content here" required></textarea>
+            <button type = "submit">Summarize</button>
+        </form>
+
+        <div class="summary-output">
+            <h3 id="summary-heading">Content Summary</h3>
+            <p id="summary-text"></p>
+        </div>
+    </div>
+</body>
+</html>
