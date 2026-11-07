@@ -6,12 +6,18 @@ import re
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_DIR = BASE_DIR / "saved_summary_model"
+STATIC_DIR = BASE_DIR / "static"
+
 
 app = FastAPI(title="Text Summarizer", description="Text Summarizer using T5", version="1.0")
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
-model = T5ForConditionalGeneration.from_pretrained("./saved_summary_model")
-tokenizer = T5Tokenizer.from_pretrained("./saved_summary_model")
+model = T5ForConditionalGeneration.from_pretrained(str(MODEL_DIR))
+tokenizer = T5Tokenizer.from_pretrained(str(MODEL_DIR))
 
 if torch.backends.mps.is_available():
     device = torch.device("mps")
@@ -22,7 +28,7 @@ else:
 
 model.to(device)
 
-templates = Jinja2Templates(directory=".")
+templates = Jinja2Templates(directory=str(BASE_DIR))
 
 class DialogueInput(BaseModel):
     dialogue: str
